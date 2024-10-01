@@ -1,14 +1,22 @@
 <script setup>
-const props = defineProps(['mercadoria']);
+const props = defineProps(['mercadoria', 'tipoAlimento']);
 </script>
 
 <template>
 
     <section id="produtos" class="mt-5 mb-5 pt-5 pb-5">
         <div class="container">
-            <div class="row text-center">
-                <h2>Escolha do cliente</h2>
-                <h1 class="fw-bold">Confira nossos produtos</h1>
+            <div class="row">
+                <form>
+                    <div class="col-md-3">
+                        <select @change="props.tipoAlimento" class="form-select">
+                            <option value="todas">Todos</option>
+                            <option value="carnes">Carnes</option>
+                            <option value="leite">Produtos derivado do leite</option>
+                            <option value="vegetais">Vegetais</option>
+                        </select>
+                    </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-lg-4" v-for="mercadoria in props.mercadoria">
@@ -46,11 +54,6 @@ const props = defineProps(['mercadoria']);
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="row text-center mt-5 d-block">
-                <a href="#" style="width: 220px;" class="btn btn-warning mb-5 text-center">Veja todos os Produtos <i
-                        class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </section>
