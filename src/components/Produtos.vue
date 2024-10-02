@@ -14,6 +14,7 @@ const props = defineProps(['mercadoria', 'filtroAlimento']);
                             <option value="carne">Carnes</option>
                             <option value="leite">Leite e derivados</option>
                             <option value="vegetal">Vegetais</option>
+                            <option value="outro">Outros</option>
                         </select>
                     </div>
                 </form>

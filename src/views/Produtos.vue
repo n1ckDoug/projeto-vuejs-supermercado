@@ -82,38 +82,27 @@ const produtos = reactive({
             tipo: 'vegetal',
         },
         {
-            productId: 6,
-            nome: 'Tomate',
-            img: "https://cdn.pixabay.com/photo/2013/07/12/18/19/tomato-153272_1280.png",
+            productId: 7,
+            nome: 'Ovos',
+            img: "https://cdn.pixabay.com/photo/2017/07/21/00/02/egg-2524267_1280.png",
             addCarrinho: false,
             quantidade: 1,
             estoque: true,
-            preco: '2,50',
+            preco: '20,00 - 30 ovos',
             avaliacoes: 122,
-            tipo: 'vegetal',
+            tipo: 'outro',
             addHome: false
         },
         {
-            productId: 6,
-            nome: 'Tomate',
-            img: "https://cdn.pixabay.com/photo/2013/07/12/18/19/tomato-153272_1280.png",
+            productId: 8,
+            nome: 'Pão',
+            img: "https://cdn.pixabay.com/photo/2017/03/31/02/27/bread-2190249_1280.png",
             addCarrinho: false,
             quantidade: 1,
             estoque: true,
-            preco: '2,50',
+            preco: '8,00',
             avaliacoes: 122,
-            tipo: 'vegetais'
-        },
-        {
-            productId: 6,
-            nome: 'Tomate',
-            img: "https://cdn.pixabay.com/photo/2013/07/12/18/19/tomato-153272_1280.png",
-            addCarrinho: false,
-            quantidade: 1,
-            estoque: true,
-            preco: '2,50',
-            avaliacoes: 122,
-            tipo: 'Vegetal'
+            tipo: 'outro'
         },
     ]
 });
@@ -129,6 +118,11 @@ const getTipoLeite = () => {
 const getTipoVegetal = () => {
     return produtos.mercadoria.filter(mercadoria => mercadoria.tipo === 'vegetal');
 };
+
+const getTipoOutro = () => {
+    return produtos.mercadoria.filter(mercadoria => mercadoria.tipo === 'outro');
+};
+
 const getProdutos = () => {
     const { filtro } = produtos;
 
@@ -139,6 +133,8 @@ const getProdutos = () => {
             return getTipoLeite();
         case 'vegetal':
             return getTipoVegetal();
+        case 'outro':
+            return getTipoOutro();
         default:
             return produtos.mercadoria;
     }
