@@ -13,6 +13,7 @@ import Produtos from '@/components/Produtos.vue';
 // console.log(route.params.nome);
 
 const produtos = reactive({
+    filtro: 'todos',
     mercadoria: [
         {
             productId: 1,
@@ -23,7 +24,7 @@ const produtos = reactive({
             estoque: true,
             preco: '24,00/KG',
             avaliacoes: 122,
-            tipo: 'carnes',
+            tipo: 'carne',
         },
         {
             productId: 2,
@@ -45,7 +46,7 @@ const produtos = reactive({
             estoque: true,
             preco: '24,00/KG',
             avaliacoes: 122,
-            tipo: 'vegetais',
+            tipo: 'vegetal',
         },
         {
             productId: 4,
@@ -56,7 +57,7 @@ const produtos = reactive({
             estoque: true,
             preco: '24,00/KG',
             avaliacoes: 122,
-            tipo: 'carnes',
+            tipo: 'carne',
         },
         {
             productId: 5,
@@ -67,7 +68,7 @@ const produtos = reactive({
             estoque: true,
             preco: '24,00/KG',
             avaliacoes: 122,
-            tipo: 'Leites',
+            tipo: 'leite',
         },
         {
             productId: 6,
@@ -78,7 +79,7 @@ const produtos = reactive({
             estoque: true,
             preco: '2,50',
             avaliacoes: 122,
-            tipo: 'Vegetal',
+            tipo: 'vegetal',
         },
         {
             productId: 6,
@@ -89,7 +90,7 @@ const produtos = reactive({
             estoque: true,
             preco: '2,50',
             avaliacoes: 122,
-            tipo: 'Vegetal',
+            tipo: 'vegetal',
             addHome: false
         },
         {
@@ -101,7 +102,7 @@ const produtos = reactive({
             estoque: true,
             preco: '2,50',
             avaliacoes: 122,
-            tipo: 'Vegetal'
+            tipo: 'vegetais'
         },
         {
             productId: 6,
@@ -117,15 +118,37 @@ const produtos = reactive({
     ]
 });
 
+const getTipoCarne = () => {
+    return produtos.mercadoria.filter(mercadoria => mercadoria.tipo === 'carne');
+};
+
+const getTipoLeite = () => {
+    return produtos.mercadoria.filter(mercadoria => mercadoria.tipo === 'leite');
+};
+
+const getTipoVegetal = () => {
+    return produtos.mercadoria.filter(mercadoria => mercadoria.tipo === 'vegetal');
+};
 const getProdutos = () => {
-    return produtos.mercadoria;
-}
+    const { filtro } = produtos;
+
+    switch (filtro) {
+        case 'carne':
+            return getTipoCarne();
+        case 'leite':
+            return getTipoLeite();
+        case 'vegetal':
+            return getTipoVegetal();
+        default:
+            return produtos.mercadoria;
+    }
+};
 </script>
 
 <template>
 
     <NavBar />
-    <Produtos :mercadoria="getProdutos()" />
+    <Produtos :filtro-alimento="e => produtos.filtro = e.target.value" :mercadoria="getProdutos()" />
     <Rodape />
 
 </template>

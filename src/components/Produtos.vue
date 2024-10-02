@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['mercadoria', 'tipoAlimento']);
+const props = defineProps(['mercadoria', 'filtroAlimento']);
 </script>
 
 <template>
@@ -9,11 +9,11 @@ const props = defineProps(['mercadoria', 'tipoAlimento']);
             <div class="row">
                 <form>
                     <div class="col-md-3">
-                        <select @change="props.tipoAlimento" class="form-select">
-                            <option value="todas">Todos</option>
-                            <option value="carnes">Carnes</option>
-                            <option value="leite">Produtos derivado do leite</option>
-                            <option value="vegetais">Vegetais</option>
+                        <select @change="props.filtroAlimento" class="form-select">
+                            <option value="todos">Todos</option>
+                            <option value="carne">Carnes</option>
+                            <option value="leite">Leite e derivados</option>
+                            <option value="vegetal">Vegetais</option>
                         </select>
                     </div>
                 </form>
